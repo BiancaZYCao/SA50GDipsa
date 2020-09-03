@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-directives';
+  title = 'Angular-Directives';
+  meetings = [ 'orange' , 'durian', 'jackfruit'];
+  isPart : number = 0;
+
+  showPart(value){ 
+    this.isPart = value;
+  }
+
+  sizeChanged(size){
+    console.log(`font size: ${size}`);
+  }
+
 }
