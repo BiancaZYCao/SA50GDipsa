@@ -10,6 +10,8 @@ import { Router } from "@angular/router";
 })
 export class AddTaskComponent implements OnInit {
   model: Task;
+  dueDateCheckFlag: boolean;
+
   priorities = [
     {name: 'Low', value: 'L'},
     {name: 'Medium', value: 'M'},
@@ -17,7 +19,7 @@ export class AddTaskComponent implements OnInit {
   ];
   constructor(private todoSvc: TodoTaskService,
     private router: Router) { 
-    this.model = new Task('', '','');
+    this.model = new Task('', 'H','');
   }
 
   ngOnInit(): void {
@@ -32,6 +34,10 @@ export class AddTaskComponent implements OnInit {
     this.model.dueDate = "";
     this.model.name = "";
     this.model.priority = "";
+  }
+
+  checkDueDate(){
+    this.dueDateCheckFlag = this.todoSvc.validateDueDate(this.model);
   }
 
 }

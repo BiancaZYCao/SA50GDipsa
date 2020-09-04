@@ -21,7 +21,7 @@
             </mat-radio-group>
 
             <mat-form-field>
-                <input matInput [matDatepicker]="picker" placeholder="Due date" name="dueDate" #dueDate="ngModel" [(ngModel)]="model.dueDate" required/>
+                <input matInput [matDatepicker]="picker" placeholder="Due date" name="dueDate" #dueDate="ngModel" [(ngModel)]="model.dueDate" (dateChange)="checkDueDate()" required/>
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
                 <div *ngIf="dueDate.errors && (dueDate.touched)">
@@ -34,7 +34,7 @@
             <button mat-raised-button
                 color="primary"
                 type="submit"
-                [disabled]="addTaskform.invalid">
+                [disabled]="addTaskform.invalid || dueDateCheckFlag">
             Submit
             </button>
 
