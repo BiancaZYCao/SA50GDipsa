@@ -1,9 +1,10 @@
 # Day 1
 
-Angular directives
-Angular binding
-Angular pacman
+- Angular directives
+- Angular binding
+- Angular pacman
 
+## Topics covered
 * Event and PRoperties binding
 * Template reference
 * Angular directives

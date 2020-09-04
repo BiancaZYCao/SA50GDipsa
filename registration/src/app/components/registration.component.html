@@ -1,0 +1,38 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <span>&nbsp; Registration Form</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-card>
+    <div class="example-container">
+        <form #regform="ngForm" (ngSubmit)="onSubmit()" novalidate>
+            <div fxLayout="column" fxLayoutAlign="flex-start" fxLayoutGap="1vw">
+                <mat-form-field>
+                    <input matInput id="email" #email="ngModel" name="email" [(ngModel)]="model.email" placeholder="you@domain.com" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required />
+                    <div *ngIf="email.errors && (email.touched)">
+                        <div *ngIf="email.errors.required">
+                            <mat-error [hidden]="!email.errors.required && email.dirty">
+                                Email is required
+                            </mat-error>
+                        </div>
+                        <div *ngIf="email.errors.pattern">
+                            <mat-error [hidden]="!email.errors.pattern">
+                                Email is invalid
+                            </mat-error>
+                        </div>
+                    </div>    
+                </mat-form-field>
+        
+        
+                <button mat-raised-button
+                    color="primary"
+                    type="submit"
+                    [disabled]="regform.invalid">
+                Submit
+                </button>
+            </div>
+            
+        </form>
+    </div>    
+</mat-card>
