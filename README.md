@@ -5,16 +5,20 @@
 - Angular pacman
 
 ## Topics covered
-* Event and PRoperties binding
+* Event and properties binding
 * Template reference
 * Angular directives
 * Template ref form
 * Render2 and elementref
 
+
+# Day 2
+
 - Registration
 - Angular Todo
 
-# Day 2
+## Topics covered
+
 * Template ref form
 * Material component
 * Validation
