@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-        <span>&nbsp; Registration Form</span>
+        <span>&nbsp; Registration</span>
     </mat-toolbar-row>
 </mat-toolbar>
 
@@ -23,13 +23,85 @@
                         </div>
                     </div>    
                 </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput id="password" #password="ngModel" name="password" type="password" [(ngModel)]="model.password" placeholder="It's your secret" pattern="^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$" required />
+                    <div *ngIf="password.errors && (password.touched)">
+                        <div *ngIf="password.errors.required">
+                            <mat-error [hidden]="!password.errors.required && email.dirty">
+                                Password is required
+                            </mat-error>
+                        </div>
+                        <div *ngIf="password.errors.pattern">
+                            <mat-error [hidden]="!password.errors.pattern">
+                                Password is invalid
+                            </mat-error>
+                        </div>
+                    </div>    
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput id="name" #name="ngModel" name="name" type="text" [(ngModel)]="model.name" placeholder="Emily" required />
+                    <div *ngIf="name.errors && (name.touched)">
+                        <div *ngIf="name.errors.required">
+                            <mat-error [hidden]="!name.errors.required && name.dirty">Name is required</mat-error>
+                        </div>  
+                    </div>   
+                </mat-form-field>
+
+                <mat-radio-group class="example-radio-group" name="gender" [(ngModel)]="model.gender">
+                    <mat-radio-button class="example-radio-button" *ngFor="let g of gender" [value]="g.value">
+                        {{g.name}}&nbsp;
+                    </mat-radio-button>
+                </mat-radio-group>
         
-        
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker" placeholder="Date of Birth" name="dob" #dateOfBirth="ngModel" [(ngModel)]="model.dob" (dateChange)="checkAge()" required/>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <div *ngIf="dateOfBirth.errors && (dateOfBirth.touched)">
+                        <div *ngIf="dateOfBirth.errors.required">
+                            <mat-error [hidden]="!dateOfBirth.errors.required && dateOfBirth.dirty">Date of Birth is required</mat-error>
+                        </div>  
+                    </div>
+                    <div>
+                        <mat-error [hidden]="dateOfBirth.dirty && ageCheckFlag">Registrant must be at least 18 years old and above</mat-error>  
+                    </div>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Nationality</mat-label>
+                    <mat-select #nationality="ngModel" id="nationality" name="nationality" [(ngModel)]="model.country" required>
+                      <mat-option *ngFor="let n of nationalities" [value]="n.value">
+                          {{n.name}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput id="contactNo" #contactNo="ngModel" name="contactNo" type="text" [(ngModel)]="model.contactNo" placeholder="Contact No" pattern="^([0-9\(\)\/\+ \-]*)$" required />
+                    <div *ngIf="contactNo.errors && (contactNo.touched)">
+                        <div *ngIf="contactNo.errors.required">
+                            <mat-error [hidden]="!contactNo.errors.required && contactNo.dirty">Contact No. is required</mat-error>
+                        </div> 
+                        <div *ngIf="contactNo.errors.pattern">
+                            <mat-error [hidden]="!contactNo.errors.pattern">Contact No. is invalid</mat-error>
+                        </div> 
+                    </div>   
+                </mat-form-field>
+
+                
                 <button mat-raised-button
                     color="primary"
                     type="submit"
-                    [disabled]="regform.invalid">
+                    [disabled]="regform.invalid || ageCheckFlag">
                 Submit
+                </button>
+
+                <button mat-raised-button
+                 color="accent" (click)="resetForm()">
+                Reset
                 </button>
             </div>
             
