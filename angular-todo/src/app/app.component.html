@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="goHome()">
+      <mat-icon>home</mat-icon>
+    </button>
+      <span>&nbsp; Todo App</span>
+      <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="addTask()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

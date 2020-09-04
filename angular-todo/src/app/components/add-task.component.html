@@ -1,0 +1,50 @@
+<mat-card>
+    <div class="example-container">
+        <form #addTaskform="ngForm" (ngSubmit)="onSubmit()" novalidate>
+            <div fxLayout="column" fxLayoutAlign="flex-start" fxLayoutGap="1vw">
+
+            <mat-form-field>
+                <input matInput id="name" #name="ngModel" name="name" [(ngModel)]="model.name" placeholder="My task"  required />
+                <div *ngIf="name.errors && (name.touched)">
+                    <div *ngIf="name.errors.required">
+                        <mat-error [hidden]="!name.errors.required && name.dirty">
+                            Task is required
+                        </mat-error>
+                    </div>
+                </div>    
+            </mat-form-field>
+
+            <mat-radio-group class="example-radio-group" name="priority" [(ngModel)]="model.priority">
+                <mat-radio-button class="example-radio-button" *ngFor="let p of priorities" [value]="p.value">
+                    {{p.name}}&nbsp;
+                </mat-radio-button>
+            </mat-radio-group>
+
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Due date" name="dueDate" #dueDate="ngModel" [(ngModel)]="model.dueDate" required/>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <div *ngIf="dueDate.errors && (dueDate.touched)">
+                    <div *ngIf="dueDate.errors.required">
+                        <mat-error [hidden]="!dueDate.errors.required && dueDate.dirty">Due date is required</mat-error>
+                    </div>  
+                </div>
+            </mat-form-field>
+
+            <button mat-raised-button
+                color="primary"
+                type="submit"
+                [disabled]="addTaskform.invalid">
+            Submit
+            </button>
+
+            <button mat-raised-button
+                color="accent" (click)="resetForm()">
+            Reset
+            </button>
+
+        </div>
+            
+    </form>
+</div>    
+</mat-card>

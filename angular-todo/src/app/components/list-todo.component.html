@@ -1,0 +1,12 @@
+<mat-list>
+    <div mat-subheader>My Tasks</div>
+    <mat-list-item *ngFor="let t of tasks">
+      <mat-icon mat-list-icon>assessment</mat-icon>
+      <div mat-line>{{t.name}}</div>
+      <div mat-line>
+        <span>{{t.priority}}</span>
+        <span>&nbsp;&nbsp;&nbsp;</span>  
+        <span>{{t.dueDate | date:'dd MMM'}}</span>
+      </div>
+    </mat-list-item>
+</mat-list>
