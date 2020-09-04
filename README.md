@@ -11,5 +11,11 @@
 * Template ref form
 * Render2 and elementref
 
+- Registration
+- Angular Todo
+
 # Day 2
+* Template ref form
+* Material component
+* Validation
 
