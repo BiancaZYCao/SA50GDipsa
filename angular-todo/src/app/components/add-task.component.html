@@ -1,6 +1,6 @@
 <mat-card>
     <div class="example-container">
-        <form #addTaskform="ngForm" (ngSubmit)="onSubmit()" novalidate>
+        <form #addTaskform="ngForm" novalidate>
             <div fxLayout="column" fxLayoutAlign="flex-start" fxLayoutGap="1vw">
 
             <mat-form-field>
@@ -33,7 +33,7 @@
 
             <button mat-raised-button
                 color="primary"
-                type="submit"
+                (click)="onSubmit()"
                 [disabled]="addTaskform.invalid || dueDateCheckFlag">
             Submit
             </button>

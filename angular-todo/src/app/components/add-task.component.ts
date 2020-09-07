@@ -33,7 +33,7 @@ export class AddTaskComponent implements OnInit {
   resetForm(){
     this.model.dueDate = "";
     this.model.name = "";
-    this.model.priority = "";
+    this.model.priority = "H";
   }
 
   checkDueDate(){

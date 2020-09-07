@@ -4,7 +4,11 @@
       <mat-icon mat-list-icon>assessment</mat-icon>
       <div mat-line>{{t.name}}</div>
       <div mat-line>
-        <span>{{t.priority}}</span>
+        <span>
+          <p *ngIf="t.priority == 'L'">Low</p>
+          <p *ngIf="t.priority == 'M'">Medium</p>
+          <p *ngIf="t.priority == 'H'">High</p>
+          </span>
         <span>&nbsp;&nbsp;&nbsp;</span>  
         <span>{{t.dueDate | date:'dd MMM'}}</span>
       </div>
